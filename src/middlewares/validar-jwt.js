@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import Admin from '../administrador/administrador.model.js';
+import Admin from '../administradores/administrador.model.js';
 import Cliente from '../cliente/cliente.model.js'
 
 
@@ -50,5 +50,5 @@ export const validarJWT = async (req, res, next) => {
     }
 
 
-}
+};
 

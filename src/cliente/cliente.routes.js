@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { clientePost } from "./cliente.controller.js";
+import { clientePost, clientePut } from "./cliente.controller.js";
 import { existeEmail } from "../helpers/db-validators.js"
 import { validarCampos } from "../middlewares/validar-campos.js";
 import Cliente from './cliente.model.js'
+import { validarJWT } from "../middlewares/validar-jwt.js";
 
 const router = Router();
 
@@ -17,6 +18,17 @@ router.post(
         validarCampos,
     ],
     clientePost
+);
+
+
+router.put(
+    '/put',
+    [
+        validarJWT,
+        check('correo', 'Se necesita el correo para poder editar').not().isEmpty(),
+        validarCampos,
+    ],
+    clientePut
 );
 
 
