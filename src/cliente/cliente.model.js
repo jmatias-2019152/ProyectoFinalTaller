@@ -1,4 +1,4 @@
-import mongoose from ('mongoose');
+import mongoose from 'mongoose';
 
 const ClienteSchema = new mongoose.Schema({
 
@@ -17,6 +17,7 @@ const ClienteSchema = new mongoose.Schema({
     },
     rol: {
         type: String,
+        required: true,
         default: 'CLIENT'
     },
     estado: {
@@ -26,4 +27,4 @@ const ClienteSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Cliente', ClienteSchema);
+export default mongoose.model('Cliente', ClienteSchema)

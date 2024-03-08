@@ -3,11 +3,18 @@ import cors from 'cors'
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './mongo.js';
+import loginRoutes from '../src/login/login.routes.js';
+import adminRoutes from '../src/administradores/administrador.routes.js';
+import clienteRoutes from '../src/cliente/cliente.routes.js';
+
 
 class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
+        this.loginPath = '/proyectoFinal/v1/login';
+        this.adminPath = '/proyectoFinal/v1/admin';
+        this.clientePath = '/proyectoFinal/v1/cliente';
         this.conectarDB(); 
         this.middlewares();
         this.routes();
@@ -29,6 +36,9 @@ class Server {
 
    
     routes() {
+        this.app.use(this.loginPath, loginRoutes);
+        this.app.use(this.adminPath, adminRoutes);
+        this.app.use(this.clientePath, clienteRoutes);
     };
 
     listen() {

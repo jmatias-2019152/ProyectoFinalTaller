@@ -1,10 +1,15 @@
-import mongoose from ('mongoose');
+import mongoose from 'mongoose';
 
 const AdminSchema = new mongoose.Schema({
 
     nombre: {
         type: String,
         required: true
+    },
+    usuario:{
+        type: String,
+        required: true,
+        unique: true
     },
     correo: {
         type: String,
@@ -17,6 +22,7 @@ const AdminSchema = new mongoose.Schema({
     },
     rol: {
         type: String,
+        required: true,
         default: 'ADMIN'
     },
     estado: {
@@ -26,4 +32,4 @@ const AdminSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Admin', AdminSchema);
+export default mongoose.model('Admin', AdminSchema);
