@@ -1,5 +1,6 @@
 import Cliente from "./cliente.model.js";
 import bcrypt from "bcryptjs"
+import jwt  from "jsonwebtoken";
 
 
 export const clientePost = async (req, res) => {
@@ -19,25 +20,67 @@ export const clientePost = async (req, res) => {
 export const clientePut = async (req, res) => {
     const { correo, nombre, password } = req.body;
     try {
-        const cliente = await Cliente.findOne({ correo });
-        console.log(cliente.correo)
-        const salt = bcrypt.genSaltSync();
-        const contraseñaIncritada = bcrypt.hashSync(password, salt);
+        const clienteExistente = await Cliente.findOne({ correo });
 
-
-
-        const clienteact = await Cliente.findOneAndUpdate({ correo, estado: true }, { nombre, password : contraseñaIncritada }, { new: true });
-        console.log(clienteact.password)
-        if (!clienteact) {
+        if (!clienteExistente || !clienteExistente.estado) {
             return res.status(404).json({ msg: "Cliente no encontrado o no activo" });
         }
-       
+
+        const salt = bcrypt.genSaltSync();
+        const contraseñaEncriptada = bcrypt.hashSync(password, salt);
+
+        const clienteActualizado = { nombre: nombre !== undefined ? nombre : clienteExistente.nombre,
+            password: contraseñaEncriptada !== clienteExistente.password ? contraseñaEncriptada: clienteExistente.password
+        };
+
+        const contraseñasIguales = await bcrypt.compare(password, clienteExistente.password);
+
+        if (clienteActualizado.nombre === clienteExistente.nombre && contraseñasIguales
+        ) {
+            return res.status(400).json({ msg: "No hubo cambios para actualizar" });
+        }
+
+        const clienteActualizadoDB = await Cliente.findOneAndUpdate( { correo, estado: true }, clienteActualizado, { new: true }
+        );
+
+        if (!clienteActualizadoDB) {
+            return res.status(404).json({ msg: "Cliente no encontrado o no activo" });
+        }
+
         res.status(200).json({
             msg: "Los datos han sido actualizados",
-            empresa: clienteact
+            cliente: clienteActualizadoDB
         });
     } catch (error) {
-        console.error('Error al actualizar la empresa:', error);
+        console.error('Error al actualizar el cliente:', error);
         res.status(500).json({ msg: 'Error interno del servidor' });
     }
 };
+
+export const clienteDelete = async (req, res) => {
+    const { correo } = req.body;
+    const token = global.tokenAcces;
+
+    try {
+        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        const cliente = await Cliente.findById(uid);
+
+        if (cliente.correo === correo) {
+            await Cliente.findByIdAndUpdate(uid, { estado: false });
+            global.tokenAcces = '';
+            res.status(200).json({
+                msg: "Perfil Eliminado"
+            });
+        } else {
+            res.status(403).json({
+                msg: "No tienes permisos para eliminar esta cuenta"
+            });
+        }
+    } catch (e) {
+        console.error(e);
+        res.status(400).json({
+            msg: "Ocurrió un error inesperado"
+        });
+    }
+};
+

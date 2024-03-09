@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { clientePost, clientePut } from "./cliente.controller.js";
+import { clienteDelete, clientePost, clientePut } from "./cliente.controller.js";
 import { existeEmail } from "../helpers/db-validators.js"
 import { validarCampos } from "../middlewares/validar-campos.js";
 import Cliente from './cliente.model.js'
@@ -31,6 +31,14 @@ router.put(
     clientePut
 );
 
-
+router.delete(
+    '/delete',
+    [
+        validarJWT,
+        check('correo', 'Se necesita el correo para poder eliminar la cuenta').not().isEmpty(),
+        validarCampos,
+    ],
+    clienteDelete
+);
 
 export default router;

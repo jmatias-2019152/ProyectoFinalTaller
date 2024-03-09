@@ -40,8 +40,8 @@ export const loginGet = async (req, res) => {
         return res.status(200).json({
             msg:
                 `---------- Se inicio sesion como ${log} ----------
-                 ------------------- BIENVENIDO -------------------
-                 ------------------ Token Creado ------------------`
+        ------------------- BIENVENIDO -------------------
+        ------------------ Token Creado ------------------`
         });
     }
 
