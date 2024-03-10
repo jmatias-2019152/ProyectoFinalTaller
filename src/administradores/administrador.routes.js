@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { activarCliente, adminPost, deleteClienteAdmin } from "./administrador.controller.js";
+import { activarCliente, adminPost, deleteClienteAdmin, putClienteAdmin } from "./administrador.controller.js";
 import { existeEmail, existeUsuario } from "../helpers/db-validators.js"
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js"
@@ -31,6 +31,16 @@ router.put(
         validarCampos,
     ],
     activarCliente
+);
+
+router.put(
+    '/putCliente',
+    [
+        validarJWT,
+        check('correo', 'Se necesita el correo para poder editar').not().isEmpty(),
+        validarCampos,
+    ],
+    putClienteAdmin
 );
 
 router.delete(

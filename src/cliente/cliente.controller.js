@@ -18,9 +18,16 @@ export const clientePost = async (req, res) => {
 };
 
 export const clientePut = async (req, res) => {
-    const { correo, nombre, password } = req.body;
+    const { correo: correoActualizado, nombre, password } = req.body;
+    const token = global.tokenAcces;
+
     try {
-        const clienteExistente = await Cliente.findOne({ correo });
+        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        const clienteExistente = await Cliente.findById(uid);
+
+        if (!clienteExistente) {
+            return res.status(403).json({ msg: 'No tienes permisos para realizar esta acción' });
+        }
 
         if (!clienteExistente || !clienteExistente.estado) {
             return res.status(404).json({ msg: "Cliente no encontrado o no activo" });
@@ -29,18 +36,19 @@ export const clientePut = async (req, res) => {
         const salt = bcrypt.genSaltSync();
         const contraseñaEncriptada = bcrypt.hashSync(password, salt);
 
-        const clienteActualizado = { nombre: nombre !== undefined ? nombre : clienteExistente.nombre,
-            password: contraseñaEncriptada !== clienteExistente.password ? contraseñaEncriptada: clienteExistente.password
+        const clienteActualizado = {
+            nombre: nombre !== undefined ? nombre : clienteExistente.nombre,
+            password: contraseñaEncriptada !== clienteExistente.password ? contraseñaEncriptada : clienteExistente.password
         };
 
         const contraseñasIguales = await bcrypt.compare(password, clienteExistente.password);
 
-        if (clienteActualizado.nombre === clienteExistente.nombre && contraseñasIguales
-        ) {
+        if (clienteActualizado.nombre === clienteExistente.nombre && contraseñasIguales) {
             return res.status(400).json({ msg: "No hubo cambios para actualizar" });
         }
 
-        const clienteActualizadoDB = await Cliente.findOneAndUpdate( { correo, estado: true }, clienteActualizado, { new: true }
+        const clienteActualizadoDB = await Cliente.findOneAndUpdate({ _id: uid, correo: correoActualizado, estado: true }, 
+            clienteActualizado, { new: true }
         );
 
         if (!clienteActualizadoDB) {
@@ -57,13 +65,19 @@ export const clientePut = async (req, res) => {
     }
 };
 
+
 export const clienteDelete = async (req, res) => {
     const { correo } = req.body;
     const token = global.tokenAcces;
 
     try {
+        
         const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
         const cliente = await Cliente.findById(uid);
+
+        if (!cliente) {
+            return res.status(403).json({ msg: 'No tienes permisos para realizar esta acción' });
+        }
 
         if (cliente.correo === correo) {
             await Cliente.findByIdAndUpdate(uid, { estado: false });

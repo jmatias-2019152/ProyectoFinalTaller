@@ -57,12 +57,75 @@ export const activarCliente = async (req, res) => {
             });
         }
 
+        if (cliente.estado === true) {
+            return res.status(400).json({
+                msg: "Usuario ya activo"
+            });
+        }
+
         res.status(200).json({
             msg: "Perfil Activado"
         });
     } catch (e) {
         console.error(e);
         res.status(400).json({
+            msg: "Ocurrió un error inesperado"
+        });
+    }
+};
+
+export const putClienteAdmin = async (req, res) => {
+    const { correo, nombre, password } = req.body;
+    const token = global.tokenAcces;
+
+    try {
+        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        const admin1 = await Admin.findById(uid);
+
+        if (!admin1) {
+            return res.status(403).json({ msg: 'No tienes permisos para realizar esta acción' });
+        }
+
+        const rol = admin1.rol;
+
+        if (rol !== 'ADMIN') {
+            return res.status(403).json({
+                msg: "No tienes permisos para realizar esta acción"
+            });
+        }
+
+        const clienteExistente = await Cliente.findOne({ correo });
+
+        if (!clienteExistente || !clienteExistente.estado) {
+            return res.status(404).json({ msg: "Cliente no encontrado o no activo" });
+        }
+
+        const salt = bcrypt.genSaltSync();
+        const contraseñaEncriptada = bcrypt.hashSync(password, salt);
+
+        const clienteActualizado = {
+            nombre: nombre !== undefined ? nombre : clienteExistente.nombre,
+            password: contraseñaEncriptada !== clienteExistente.password ? contraseñaEncriptada : clienteExistente.password
+        };
+
+        // Actualizar datos del cliente
+        const clienteActualizadoDB = await Cliente.findOneAndUpdate(
+            { _id: clienteExistente._id, estado: true },
+            clienteActualizado,
+            { new: true }
+        );
+
+        if (!clienteActualizadoDB) {
+            return res.status(404).json({ msg: "Cliente no encontrado o no activo" });
+        }
+
+        res.status(200).json({
+            msg: "Los datos del cliente han sido actualizados por el administrador",
+            cliente: clienteActualizadoDB
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
             msg: "Ocurrió un error inesperado"
         });
     }
