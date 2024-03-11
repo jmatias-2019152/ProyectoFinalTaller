@@ -1,0 +1,497 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "ProyectoFinal",
+    "dateExported": "2024-03-11T05:30:45.307Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "e1a955eb-88b4-4b95-97ed-6e52256796e8",
+            "name": "Login",
+            "containerId": "",
+            "created": "2024-03-08T23:54:39.260Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "badc1ac5-54f5-483d-b769-e7e11eba6635",
+            "name": "Usuarios",
+            "containerId": "",
+            "created": "2024-03-09T00:00:58.219Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "46bc68fd-038a-400d-9211-da7e3b547605",
+            "name": "Categorias",
+            "containerId": "",
+            "created": "2024-03-11T02:15:05.151Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "b4c42f12-5ca9-4c18-a2cd-f8f1de0d7bdb",
+            "name": "Productos",
+            "containerId": "",
+            "created": "2024-03-11T05:18:26.067Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "24bed751-a359-4357-905f-00465b730021",
+            "name": "Carrito",
+            "containerId": "",
+            "created": "2024-03-12T03:31:28.094Z",
+            "sortNum": 60000
+        },
+        {
+            "_id": "dd6e6792-063b-4bc8-b91f-516986b5cd66",
+            "name": "Factura",
+            "containerId": "",
+            "created": "2024-03-12T05:36:57.866Z",
+            "sortNum": 70000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "b72ddc55-334e-459a-88a0-1875131aa8ec",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "e1a955eb-88b4-4b95-97ed-6e52256796e8",
+            "name": "getUsuarios",
+            "url": "http://localhost:3000/proyectoFinal/v1/login",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-03-08T23:54:48.452Z",
+            "modified": "2024-03-08T23:58:51.119Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "b0b45870-9e9e-492d-943b-59be922dc59a",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "e1a955eb-88b4-4b95-97ed-6e52256796e8",
+            "name": "Login",
+            "url": "http://localhost:3000/proyectoFinal/v1/login/login",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-03-08T23:54:53.195Z",
+            "modified": "2024-03-12T06:05:12.184Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"plopez@gmail.com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "2d5f1c31-e062-49d2-bb0b-598069c8a913",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "e1a955eb-88b4-4b95-97ed-6e52256796e8",
+            "name": "postAdmin",
+            "url": "http://localhost:3000/proyectoFinal/v1/admin/post",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-03-08T23:55:01.402Z",
+            "modified": "2024-03-09T02:53:45.165Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Jose Matias\",\n  \"usuario\": \"jmatias11212\",\n  \"correo\": \"jmatias11211@gmail.com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "da155a70-80d9-4c2d-99d9-9fdbba4aa469",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "e1a955eb-88b4-4b95-97ed-6e52256796e8",
+            "name": "postCliente",
+            "url": "http://localhost:3000/proyectoFinal/v1/cliente/post",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-03-08T23:55:08.091Z",
+            "modified": "2024-03-10T18:47:33.175Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Chenta lopez\",\n  \"correo\": \"plopez21@gmail.com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "e54169c9-b2ad-4430-8171-2a8340574694",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "badc1ac5-54f5-483d-b769-e7e11eba6635",
+            "name": "putCliente",
+            "url": "http://localhost:3000/proyectoFinal/v1/cliente/put",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-03-09T00:01:07.363Z",
+            "modified": "2024-03-11T01:33:56.958Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"plopez21@gmail.com\",\n  \"password\": \"123456\",\n  \"nombre\": \"Aleps1\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "5077d60a-ff8b-4205-ad79-8d1a88d5d1f3",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "badc1ac5-54f5-483d-b769-e7e11eba6635",
+            "name": "deleteCliente",
+            "url": "http://localhost:3000/proyectoFinal/v1/cliente/delete",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2024-03-09T01:36:13.923Z",
+            "modified": "2024-03-11T01:24:37.752Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"plopez21@gmail.com\"\n}",
+                "form": []
+            },
+            "reqType": "del",
+            "tests": []
+        },
+        {
+            "_id": "439c0be5-1724-45de-b5fd-a46c97f5dfb1",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "badc1ac5-54f5-483d-b769-e7e11eba6635",
+            "name": "reactivarClienteAdmin",
+            "url": "http://localhost:3000/proyectoFinal/v1/admin/activar",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2024-03-09T01:36:28.194Z",
+            "modified": "2024-03-10T18:57:31.194Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"plopez@gmail.com\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "0aa84642-b654-4d80-9d2b-6b459b4f19e3",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "badc1ac5-54f5-483d-b769-e7e11eba6635",
+            "name": "deleteClienteAdmin",
+            "url": "http://localhost:3000/proyectoFinal/v1/admin/deleteCliente",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2024-03-09T02:19:40.506Z",
+            "modified": "2024-03-09T02:55:55.016Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"plopez@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "81fa7830-d5d9-487a-b0dc-122fd5a37ce3",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "badc1ac5-54f5-483d-b769-e7e11eba6635",
+            "name": "putClienteAdmin",
+            "url": "http://localhost:3000/proyectoFinal/v1/admin/putCliente",
+            "method": "PUT",
+            "sortNum": 100000,
+            "created": "2024-03-10T19:02:09.047Z",
+            "modified": "2024-03-11T01:44:05.870Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"plopez@gmail.com\",\n  \"password\": \"123456\",\n  \"nombre\": \"Pedriños\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "8edcae49-382e-490c-b07a-a4bb5601c8a9",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "46bc68fd-038a-400d-9211-da7e3b547605",
+            "name": "categoriaGet",
+            "url": "http://localhost:3000/proyectoFinal/v1/categoria/get",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2024-03-11T02:15:12.743Z",
+            "modified": "2024-03-11T02:15:59.985Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8db3d8ae-681e-41a1-b7c3-cf3432c4cd3d",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "46bc68fd-038a-400d-9211-da7e3b547605",
+            "name": "categoriaPost",
+            "url": "http://localhost:3000/proyectoFinal/v1/categoria/post",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2024-03-11T02:27:05.517Z",
+            "modified": "2024-03-11T03:06:25.326Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombreCategoria\": \"Alimentos\",\n  \"descripcion\": \"Diversidad de alimentos\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "43a47934-b11c-4086-878b-d7b62a57551a",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "46bc68fd-038a-400d-9211-da7e3b547605",
+            "name": "categoriaDelete",
+            "url": "http://localhost:3000/proyectoFinal/v1/categoria/delete",
+            "method": "DELETE",
+            "sortNum": 130000,
+            "created": "2024-03-11T03:00:15.708Z",
+            "modified": "2024-03-11T03:02:23.063Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombreCategoria\": \"Alimentos\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5b9f5c09-b000-4771-99f6-fd535af30567",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "46bc68fd-038a-400d-9211-da7e3b547605",
+            "name": "categoriaPut",
+            "url": "http://localhost:3000/proyectoFinal/v1/categoria/put",
+            "method": "PUT",
+            "sortNum": 140000,
+            "created": "2024-03-11T05:14:16.861Z",
+            "modified": "2024-03-11T05:16:04.183Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombreCategoria\": \"Alimentos\",\n  \"descripcion\": \"Carne fresca\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "db43583d-d1f6-4434-897a-49cca41441ba",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "b4c42f12-5ca9-4c18-a2cd-f8f1de0d7bdb",
+            "name": "productoGet",
+            "url": "http://localhost:3000/proyectoFinal/v1/producto/get",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2024-03-11T05:22:51.222Z",
+            "modified": "2024-03-11T03:28:37.617Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "694ec876-a679-4f23-9264-84ef26248de8",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "b4c42f12-5ca9-4c18-a2cd-f8f1de0d7bdb",
+            "name": "productoPost",
+            "url": "http://localhost:3000/proyectoFinal/v1/producto/post",
+            "method": "POST",
+            "sortNum": 160000,
+            "created": "2024-03-11T14:35:54.596Z",
+            "modified": "2024-03-11T03:23:18.754Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Cocaaaaaaaaaaaaaaaa\",\n  \"precio\": \"30\",\n  \"descripcion\": \"Coca cola de 2.5 litos\",\n  \"stock\": \"35\",\n  \"categoria\": \"65ee7545be6630a470a63446\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "5e30b89d-9bdd-45de-876b-6f95132289bf",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "b4c42f12-5ca9-4c18-a2cd-f8f1de0d7bdb",
+            "name": "productoBuscarPorNombre",
+            "url": "http://localhost:3000/proyectoFinal/v1/producto/buscarPorNombre",
+            "method": "GET",
+            "sortNum": 170000,
+            "created": "2024-03-11T03:26:07.597Z",
+            "modified": "2024-03-11T03:43:04.737Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"libra de res\"\n}",
+                "form": []
+            },
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "a6a45e38-dd0e-4853-889d-1e26775525be",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "b4c42f12-5ca9-4c18-a2cd-f8f1de0d7bdb",
+            "name": "productoBuscarPorId",
+            "url": "http://localhost:3000/proyectoFinal/v1/producto/buscarPorId",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2024-03-11T04:14:09.974Z",
+            "modified": "2024-03-11T03:25:00.902Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{ \n  \"id\": \"65ee7ea46a0a3de6d2583295\" \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "dd1738fb-64f5-4cec-bf8c-98f0ddba35c6",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "b4c42f12-5ca9-4c18-a2cd-f8f1de0d7bdb",
+            "name": "productoPut",
+            "url": "http://localhost:3000/proyectoFinal/v1/producto/put",
+            "method": "PUT",
+            "sortNum": 200000,
+            "created": "2024-03-11T04:11:18.048Z",
+            "modified": "2024-03-12T06:04:44.620Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": \"65ee7eee86b977c4b8fc098b\",\n  \"nombre\": \"libra de res\",\n  \"precio\": \"30\",\n  \"descripcion\": \"Carne de res\",\n  \"stock\": \"30\",\n  \"categoria\": \"65ee7545be6630a470a63446\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "a3d62bbc-f5f8-4619-86a5-4f006e164077",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "b4c42f12-5ca9-4c18-a2cd-f8f1de0d7bdb",
+            "name": "productoBuscarPorCategoria",
+            "url": "http://localhost:3000/proyectoFinal/v1/producto/buscarPorCategoria",
+            "method": "GET",
+            "sortNum": 210000,
+            "created": "2024-03-11T04:51:51.655Z",
+            "modified": "2024-03-11T04:59:46.962Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"idCategoria\": \"65ee7545be6630a470a63446\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f9a21df3-c1b5-4a39-bf64-b0b18ffdb91a",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "b4c42f12-5ca9-4c18-a2cd-f8f1de0d7bdb",
+            "name": "productoDelete",
+            "url": "http://localhost:3000/proyectoFinal/v1/producto/delete",
+            "method": "DELETE",
+            "sortNum": 220000,
+            "created": "2024-03-11T03:20:24.296Z",
+            "modified": "2024-03-11T03:24:10.278Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": \"65ee794e8781677591acd64c\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "67574777-2520-4a3d-b960-95014d00d913",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "24bed751-a359-4357-905f-00465b730021",
+            "name": "carritoPost",
+            "url": "http://localhost:3000/proyectoFinal/v1/carrito/post",
+            "method": "POST",
+            "sortNum": 240000,
+            "created": "2024-03-12T03:31:38.964Z",
+            "modified": "2024-03-12T06:05:37.648Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"plopez@gmail.com\",\n  \"idProducto\": \"65ee7eee86b977c4b8fc098b\",\n  \"cantidad\": \"1\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "22a37f26-6b14-4371-84d7-d039b61a4c85",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "24bed751-a359-4357-905f-00465b730021",
+            "name": "carritoGet",
+            "url": "http://localhost:3000/proyectoFinal/v1/carrito/get",
+            "method": "GET",
+            "sortNum": 260000,
+            "created": "2024-03-12T04:42:45.965Z",
+            "modified": "2024-03-12T04:44:19.336Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d2bb8961-b846-4869-8500-fcdb62f29670",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "24bed751-a359-4357-905f-00465b730021",
+            "name": "carritoPut",
+            "url": "http://localhost:3000/proyectoFinal/v1/carrito/put",
+            "method": "PUT",
+            "sortNum": 270000,
+            "created": "2024-03-12T04:50:19.892Z",
+            "modified": "2024-03-11T03:35:41.091Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"idProducto\": \"65ee7eee86b977c4b8fc098b\",\n  \"nuevaCantidad\": \"4\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "244c77d6-aa46-4a65-ac07-13347ad98c84",
+            "colId": "b9ed95ca-fc3d-4766-998a-bf2566a5265a",
+            "containerId": "dd6e6792-063b-4bc8-b91f-516986b5cd66",
+            "name": "facturaPost",
+            "url": "http://localhost:3000/proyectoFinal/v1/factura/post",
+            "method": "POST",
+            "sortNum": 280000,
+            "created": "2024-03-12T05:37:05.715Z",
+            "modified": "2024-03-12T05:37:20.244Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
