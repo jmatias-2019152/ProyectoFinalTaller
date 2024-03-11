@@ -1,4 +1,5 @@
-import Admin from '../administradores/administrador.model.js'
+import Admin from '../administradores/administrador.model.js';
+import Categoria from '../categoria/categoria.model.js';
 
 export const existeEmail = async (correo = '', modelo) => {
     const existeEmail = await modelo.findOne({ correo });
@@ -8,8 +9,15 @@ export const existeEmail = async (correo = '', modelo) => {
 };
 
 export const existeUsuario = async (usuario = '' ) => {
-    const existeEmail = await Admin.findOne({ usuario });
-    if (existeEmail) {
+    const existeUsuario = await Admin.findOne({ usuario });
+    if (existeUsuario) {
         throw new Error(`El usuario ${usuario} ya fue registrado`);
+    }
+};
+
+export const existeCategoria = async (nombreCategoria = '' ) => {
+    const existeCategoria = await Categoria.findOne({ nombreCategoria });
+    if (existeCategoria) {
+        throw new Error(`La categoria ${nombreCategoria} ya fue registrada`);
     }
 };

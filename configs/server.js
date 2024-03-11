@@ -6,6 +6,7 @@ import { dbConnection } from './mongo.js';
 import loginRoutes from '../src/login/login.routes.js';
 import adminRoutes from '../src/administradores/administrador.routes.js';
 import clienteRoutes from '../src/cliente/cliente.routes.js';
+import categoriaRoutes from '../src/categoria/categoria.routes.js';
 
 
 class Server {
@@ -15,6 +16,8 @@ class Server {
         this.loginPath = '/proyectoFinal/v1/login';
         this.adminPath = '/proyectoFinal/v1/admin';
         this.clientePath = '/proyectoFinal/v1/cliente';
+        this.categoriaPath = '/proyectoFinal/v1/categoria';
+
         this.conectarDB(); 
         this.middlewares();
         this.routes();
@@ -39,6 +42,8 @@ class Server {
         this.app.use(this.loginPath, loginRoutes);
         this.app.use(this.adminPath, adminRoutes);
         this.app.use(this.clientePath, clienteRoutes);
+        this.app.use(this.categoriaPath, categoriaRoutes);
+        
     };
 
     listen() {
