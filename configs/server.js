@@ -9,6 +9,7 @@ import clienteRoutes from '../src/cliente/cliente.routes.js';
 import categoriaRoutes from '../src/categoria/categoria.routes.js';
 import productoRoutes from '../src/producto/producto.routes.js';
 import carritoRoutes from '../src/carrito/carrito.routes.js';
+import facturaRoutes from '../src/factura/factura.routes.js';
 
 
 class Server {
@@ -21,6 +22,7 @@ class Server {
         this.categoriaPath = '/proyectoFinal/v1/categoria';
         this.productoPath = '/proyectoFinal/v1/producto';
         this.carritoPath = '/proyectoFinal/v1/carrito';
+        this.facturaPath = '/proyectoFinal/v1/factura';
 
         this.conectarDB(); 
         this.middlewares();
@@ -49,6 +51,7 @@ class Server {
         this.app.use(this.categoriaPath, categoriaRoutes);
         this.app.use(this.productoPath, productoRoutes);
         this.app.use(this.carritoPath, carritoRoutes);
+        this.app.use(this.facturaPath, facturaRoutes);
         
     };
 
