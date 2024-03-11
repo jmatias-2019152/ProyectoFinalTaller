@@ -53,7 +53,7 @@ export const loginGet = async (req, res) => {
 export const usuariosGet = async (req, res) => {
 
     const { limite, desde } = req.query;
-    const query = { estado: true };
+    const query = {  };
 
     const [totalAdmin, admin] = await Promise.all([
         Admin.countDocuments(query),

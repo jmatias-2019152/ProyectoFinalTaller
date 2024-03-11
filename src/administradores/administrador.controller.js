@@ -108,10 +108,13 @@ export const putClienteAdmin = async (req, res) => {
             password: contraseñaEncriptada !== clienteExistente.password ? contraseñaEncriptada : clienteExistente.password
         };
 
-        // Actualizar datos del cliente
-        const clienteActualizadoDB = await Cliente.findOneAndUpdate(
-            { _id: clienteExistente._id, estado: true },
-            clienteActualizado,
+        const contraseñasIguales = await bcrypt.compare(password, clienteExistente.password);
+
+        if (clienteActualizado.nombre === clienteExistente.nombre && contraseñasIguales) {
+            return res.status(400).json({ msg: "No hubo cambios para actualizar" });
+        }
+
+        const clienteActualizadoDB = await Cliente.findOneAndUpdate({ _id: clienteExistente._id, estado: true }, clienteActualizado,
             { new: true }
         );
 
