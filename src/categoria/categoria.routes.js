@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { categoriaDelete, categoriaGet, categoriaPost } from "./categoria.controller.js";
+import { categoriaDelete, categoriaGet, categoriaPost, categoriaPut } from "./categoria.controller.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { existeCategoria } from "../helpers/db-validators.js";
@@ -25,6 +25,17 @@ router.post(
         validarCampos
     ],
     categoriaPost
+);
+
+router.put(
+    '/put',
+    [
+        validarJWT,
+        check("nombreCategoria", "Ingresar el nombre de la categoria que se quiere editar").not().isEmpty(),
+        check("descripcion", "Ingrese la nueva descripcion").not().isEmpty(),
+        validarCampos
+    ],
+    categoriaPut
 );
 
 router.delete(
